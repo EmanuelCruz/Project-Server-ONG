@@ -1,6 +1,6 @@
 const loginQuery = require("../querys/login");
 var consts = require("../constant/const");
-const { body, validationResult } = require("express-validator");
+const { validationResult } = require("express-validator");
 
 exports.loginAuth = async (req, res, next) => {
   const emailInput = req.body.email;
@@ -33,10 +33,3 @@ exports.loginValidator = (req, res, next) => {
   }
   next();
 };
-
-exports.loginValuesFieldValidator = [
-  body("email").exists().isEmail().withMessage("Invalid email or password"),
-  body("password")
-    .isLength({ min: 4 })
-    .withMessage("Invalid email or password"),
-];

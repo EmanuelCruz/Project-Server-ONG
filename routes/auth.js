@@ -7,7 +7,7 @@ const consts = require("../constant/const");
 /* POST login with email and password. */
 router.post(
   consts.url_auth_login,
-  loginController.loginValuesFieldValidator,
+  consts.loginValuesFieldValidator,
   loginController.loginValidator,
   loginController.loginAuth
 );
