@@ -1,9 +1,9 @@
-const db = require('../models');
+const db = require("../models");
 const Organization = db.Organization;
 
 exports.getOrganization = (orgId) => {
-    return Organization.findOne({
-        where: {id: orgId},
-        attributes: ['name', 'image', 'phone', 'address', 'welcomeText']
-    });
+  return Organization.findOne({
+    where: { id: orgId },
+    attributes: ["name", "image", "phone", "address", "welcomeText"],
+  });
 };
