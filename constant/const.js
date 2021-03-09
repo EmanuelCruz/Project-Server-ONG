@@ -11,7 +11,7 @@ module.exports = {
   code_failure: 500,
 
   //** This string is used for validate email and password fields when the user login */
-  loginValuesFieldValidator = [
+  loginValuesFieldValidator: [
     body("email").exists().isEmail().withMessage("Invalid email or password"),
     body("password")
       .isLength({ min: 6 })
