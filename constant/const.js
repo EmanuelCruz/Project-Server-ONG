@@ -9,15 +9,14 @@ module.exports = {
   code_success: 200,
   // FAILURE code
   code_failure: 500,
-};
 
-//** This string is used for validate email and password fields when the user login */
-module.exports.loginValuesFieldValidator = [
-  body("email").exists().isEmail().withMessage("Invalid email or password"),
-  body("password")
-    .isLength({ min: 4 })
-    .withMessage("Invalid email or password"),
-];
+  //** This string is used for validate email and password fields when the user login */
+  loginValuesFieldValidator = [
+    body("email").exists().isEmail().withMessage("Invalid email or password"),
+    body("password")
+      .isLength({ min: 6 })
+      .withMessage("Invalid email or password"),
+  ],
 
   //Mail API KEY
   SENGRID_API_KEY_TESTING:

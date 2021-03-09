@@ -1,6 +1,7 @@
 const loginQuery = require("../querys/login");
 var consts = require("../constant/const");
 const { validationResult } = require("express-validator");
+const bcrypt = require("bcrypt");
 
 exports.loginAuth = async (req, res, next) => {
   const emailInput = req.body.email;
@@ -12,14 +13,11 @@ exports.loginAuth = async (req, res, next) => {
 
     if (emailInput === userInDataBase) {
       const password = await loginQuery.getUserByPassword(passwordInput);
-      const passwordInDataBase = password.dataValues.password;
-      if (passwordInput === passwordInDataBase) {
+      const validPassword = await bcrypt.compare(passwordInput, password);
+
+      if (validPassword) {
         res.status(consts.code_success).send(user.dataValues);
-      } else {
-        return false;
       }
-    } else {
-      return false;
     }
   } catch (err) {
     res.status(consts.code_failure).send({ ok: false });
