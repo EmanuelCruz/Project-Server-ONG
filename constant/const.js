@@ -39,4 +39,10 @@ module.exports = {
   //Password Change Mail
   MAIL_PASSWORD_CHANGE_SUBJECT: "Su contraseña fue cambiada con exito",
   MAIL_PASSWORD_CHANGE_TEXT: "Su nueva contraseña es ",
+
+  //Aws S3
+  AWS_REGION: "sa-east-1",
+  AWS_ACCESS_KEY_ID: "AKIAX2K6IMK7P6G45VPN",
+  AWS_SECRET_ACCESS_KEY: "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",
+  AWS_BUCKET_NAME: "", //Complete with bucket name
 };
