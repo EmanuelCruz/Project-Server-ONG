@@ -10,11 +10,11 @@ AWS.config.update({
 var s3 = new AWS.S3();
 
 //Insert a function Name and a image
-function uploadImage(name, image) {
+function uploadImage(name, fileContent) {
   //configuring parameters
   var params = {
     Bucket: constant.AWS_BUCKET_NAME,
-    Body: image,
+    Body: fileContent,
     Key: name,
   };
 
@@ -27,6 +27,7 @@ function uploadImage(name, image) {
     //success
     if (data) {
       console.log("Uploaded in:", data.Location);
+      return data;
     }
   });
 }
