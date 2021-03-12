@@ -11,6 +11,7 @@ AWS.config.update({
 
 var s3 = new AWS.S3();
 
+//Insert a function Name and a image
 function uploadImage(name, image) {
   //configuring parameters
   var params = {
