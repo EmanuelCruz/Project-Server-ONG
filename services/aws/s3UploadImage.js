@@ -1,6 +1,4 @@
 const AWS = require("aws-sdk");
-const fs = require("fs");
-const path = require("path");
 const constant = require("../../constant/const");
 
 //configuring the AWS environment
