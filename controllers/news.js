@@ -1,13 +1,17 @@
 const newsQuery = require("../querys/news");
 var consts = require("../constant/const");
 
-exports.getAllNews = (req, res, next) => {
-    try {
-        res.send({ ruta: "/news" });
-    } catch (error) {
-        res.send(error);
-    }
+exports.getNews = (req, res, next) => {
+    newsQuery
+        .getTypeNews("news")
+        .then((org) => {
+            res.status(consts.code_success).send(org);
+        })
+        .catch((err) =>
+            res.status(consts.code_failure).send({ message: err.message })
+        );
 };
+
 exports.getNewsById = (req, res, next) => {
     try {
         const entryId = req.params.id;

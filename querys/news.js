@@ -10,3 +10,10 @@ exports.getEntry = (entryId) => {
         console.log(error);
     }
 };
+
+exports.getTypeNews = (typeNews) => {
+    return Entry.findAll({
+        where: { type: typeNews },
+        attributes: ["name", "image", "createdAt"],
+    });
+};

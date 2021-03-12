@@ -4,6 +4,7 @@ var router = express.Router();
 var newsController = require("../controllers/news");
 var consts = require("../constant/const");
 
+router.get("/", newsController.getNews);
 /* GET news by ID. */
 router.get(consts.URL_NEWS_ID, newsController.getNewsById);
 
