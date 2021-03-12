@@ -13,8 +13,14 @@ exports.getNewsById = (req, res, next) => {
         const entryId = req.params.id;
         newsQuery
             .getEntry(entryId)
-            .then((entry) => {
-                res.status(consts.code_success).send(entry);
+            .then((dataEntry) => {
+                if (dataEntry.length === 0) {
+                    res.status(consts.code_success).send({
+                        message: "News Not found",
+                    });
+                } else {
+                    res.status(consts.code_success).send(dataEntry);
+                }
             })
             .catch((err) =>
                 res.status(consts.code_failure).send({ message: err.message })
