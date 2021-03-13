@@ -9,7 +9,10 @@ module.exports = {
   code_success: 200,
   // FAILURE code
   code_failure: 500,
-
+  //FAILURE CODE 404
+  CODE_FAILURE_404: 404,
+  //USER NOT FOUND
+  NOT_FOUND_USER: "User not found",
   //** This string is used for validate email and password fields when the user login */
   loginValuesFieldValidator: [
     body("email").exists().isEmail().withMessage("Invalid email or password"),
