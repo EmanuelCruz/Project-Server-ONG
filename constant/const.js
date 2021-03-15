@@ -45,4 +45,6 @@ module.exports = {
 
     //News Route
     URL_NEWS_ID: "/:id",
+    MESSAGE_NOT_FOUND: "News Not found",
+    ARRAY_ENPTY: 0,
 };
