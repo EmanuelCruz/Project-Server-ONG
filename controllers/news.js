@@ -13,23 +13,19 @@ exports.getNews = (req, res, next) => {
 };
 
 exports.getNewsById = (req, res, next) => {
-    try {
-        const entryId = req.params.id;
-        newsQuery
-            .getEntry(entryId)
-            .then((dataEntry) => {
-                if (dataEntry.length === 0) {
-                    res.status(consts.code_success).send({
-                        message: "News Not found",
-                    });
-                } else {
-                    res.status(consts.code_success).send(dataEntry);
-                }
-            })
-            .catch((err) =>
-                res.status(consts.code_failure).send({ message: err.message })
-            );
-    } catch (error) {
-        res.send(error);
-    }
+    const entryId = req.params.id;
+    newsQuery
+        .getEntry(entryId)
+        .then((dataEntry) => {
+            if (dataEntry.length === consts.ARRAY_ENPTY) {
+                res.status(consts.code_success).send({
+                    message: consts.MESSAGE_NOT_FOUND,
+                });
+            } else {
+                res.status(consts.code_success).send(dataEntry);
+            }
+        })
+        .catch((err) =>
+            res.status(consts.code_failure).send({ message: err.message })
+        );
 };
