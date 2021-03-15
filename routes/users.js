@@ -3,10 +3,11 @@ const db = require("../models");
 var router = express.Router();
 const userDelete = require("../querys/deleteUser");
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
-});
+const consts = require("../constant/const");
+const usersController = require("../controllers/users");
+
+/* GET users listing if user is admin. */
+router.get(consts.url_users, usersController.usersList);
 
 /* GET authenticated user. */
 router.get("/auth/me", async function (req, res, next) {

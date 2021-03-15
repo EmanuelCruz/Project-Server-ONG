@@ -5,11 +5,16 @@ module.exports = {
     url_org: "/:id/public",
     // POST login with email and password
     url_auth_login: "/login",
+    // GET all users
+    url_users: "/users",
     // SUCCESS code
     code_success: 200,
     // FAILURE code
     code_failure: 500,
-
+    //FAILURE CODE 404
+    CODE_FAILURE_404: 404,
+    //USER NOT FOUND
+    NOT_FOUND_USER: "User not found",
     //** This string is used for validate email and password fields when the user login */
     loginValuesFieldValidator: [
         body("email")
@@ -43,6 +48,8 @@ module.exports = {
     MAIL_PASSWORD_CHANGE_SUBJECT: "Su contraseña fue cambiada con exito",
     MAIL_PASSWORD_CHANGE_TEXT: "Su nueva contraseña es ",
 
+    // User is not an admin:
+    USER_IS_NOT_AN_ADMIN: "El usuario no es administrador",
     //News Route
     URL_NEWS_ID: "/:id",
     MESSAGE_NOT_FOUND: "News Not found",
