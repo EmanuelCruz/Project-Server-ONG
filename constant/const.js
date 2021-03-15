@@ -5,6 +5,8 @@ module.exports = {
   url_org: "/:id/public",
   // POST login with email and password
   url_auth_login: "/login",
+  // GET all users
+  url_users: "/users",
   // SUCCESS code
   code_success: 200,
   // FAILURE code
