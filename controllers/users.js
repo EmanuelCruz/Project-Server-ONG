@@ -12,8 +12,8 @@ exports.usersList = async (req, res, next) => {
     const users = await usersListQuery.getUsersList();
     roleId === 1
       ? res.status(consts.code_success).send(users)
-      : res.status(consts.code_failure).send("User is not an Admin");
+      : res.status(consts.code_failure).send(consts.USER_IS_NOT_AN_ADMIN);
   } catch (err) {
-    res.status(consts.code_failure).send("User is not an Admin");
+    res.status(consts.code_failure).send(consts.USER_IS_NOT_AN_ADMIN);
   }
 };

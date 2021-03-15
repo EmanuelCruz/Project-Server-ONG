@@ -25,11 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-<<<<<<< HEAD
 app.use("/", usersRouter);
-=======
-app.use("/user", usersRouter);
->>>>>>> 7e380be36928fcac3b61e521d97742bab1f9e3c7
 app.use("/organizations", organizationsRouter);
 app.use("/auth", authRouter);
 

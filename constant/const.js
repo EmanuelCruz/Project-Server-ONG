@@ -44,4 +44,7 @@ module.exports = {
   //Password Change Mail
   MAIL_PASSWORD_CHANGE_SUBJECT: "Su contraseña fue cambiada con exito",
   MAIL_PASSWORD_CHANGE_TEXT: "Su nueva contraseña es ",
+
+  // User is not an admin:
+  USER_IS_NOT_AN_ADMIN: "El usuario no es administrador",
 };
