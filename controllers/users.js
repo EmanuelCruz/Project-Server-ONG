@@ -17,3 +17,35 @@ exports.usersList = async (req, res, next) => {
     res.status(consts.code_failure).send(consts.USER_IS_NOT_AN_ADMIN);
   }
 };
+
+// Authenticated user
+exports.authUser = async (req, res, next) => {
+  try {
+    const token = req.headers[consts.AUTHORIZATION];
+    if (!token) {
+      return res.status(401).json({
+        auth: false,
+        message: consts.TOKEN_IS_NOT_PROVIDED,
+      });
+    }
+    const decoded = jwt.verify(token, process.env.SECRET_TOKEN);
+    const { id } = decoded.data;
+    const user = await db.User.findAll({
+      where: {
+        id,
+      },
+      attributes: [
+        consts.FIRST_NAME,
+        consts.LAST_NAME,
+        consts.EMAIL,
+        consts.IMAGE,
+      ],
+    });
+    if (!user) {
+      return res.status(404).send(consts.NOT_FOUND_USER);
+    }
+    res.json(user);
+  } catch (err) {
+    res.json(err);
+  }
+};
