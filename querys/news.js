@@ -1,19 +1,25 @@
 const db = require("../models");
 const Entry = db.Entry;
 
-exports.getEntry = (entryId) => {
+exports.getEntry = async (entryId) => {
     try {
-        return Entry.findAll({
+        const entry = await Entry.findAll({
             where: { id: entryId, type: "news" },
         });
+        return entry;
     } catch (error) {
         console.log(error);
     }
 };
 
-exports.getTypeNews = (typeNews) => {
-    return Entry.findAll({
-        where: { type: typeNews },
-        attributes: ["name", "image", "createdAt"],
-    });
+exports.getTypeNews = async (typeNews) => {
+    try {
+        const news = await Entry.findAll({
+            where: { type: typeNews },
+            attributes: ["name", "image", "createdAt"],
+        });
+        return news;
+    } catch (error) {
+        console.log(error);
+    }
 };
