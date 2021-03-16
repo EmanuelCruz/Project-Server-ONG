@@ -5,11 +5,16 @@ module.exports = {
   url_org: "/:id/public",
   // POST login with email and password
   url_auth_login: "/login",
+  // GET all users
+  url_users: "/users",
   // SUCCESS code
   code_success: 200,
   // FAILURE code
   code_failure: 500,
-
+  //FAILURE CODE 404
+  CODE_FAILURE_404: 404,
+  //USER NOT FOUND
+  NOT_FOUND_USER: "User not found",
   //** This string is used for validate email and password fields when the user login */
   loginValuesFieldValidator: [
     body("email").exists().isEmail().withMessage("Invalid email or password"),
@@ -45,4 +50,20 @@ module.exports = {
   AWS_ACCESS_KEY_ID: "AKIAX2K6IMK7P6G45VPN",
   AWS_SECRET_ACCESS_KEY: "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",
   AWS_BUCKET_NAME: "", //Complete with bucket name
+
+  // User is not an admin:
+  USER_IS_NOT_AN_ADMIN: "El usuario no es administrador",
+  //News Route
+  URL_NEWS_ID: "/:id",
+  MESSAGE_NOT_FOUND: "News Not found",
+  ARRAY_ENPTY: 0,
+  //Authenticated user:
+  // Authorization user token
+  AUTHORIZATION: "authorization",
+  TOKEN_IS_NOT_PROVIDED: "no token provided",
+  // User Atrributes
+  FIRST_NAME: "firstName",
+  LAST_NAME: "lastName",
+  EMAIL: "email",
+  IMAGE: "image",
 };
