@@ -1,8 +1,8 @@
-const middlewares = {
+const middlewares = (req, res, next) => {
 
-  isAdmin = (req, res, next, user) => {
+  isAdmin = (user) => {
     if (user.roleId === 1) return next();
-    res.redirect('/')
+    res.redirect('/');
   }
 }
 
