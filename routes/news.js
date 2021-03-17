@@ -9,6 +9,6 @@ router.get("/", newsController.getNews);
 /* GET news by ID. */
 router.get(consts.URL_NEWS_ID, newsController.getNewsById);
 /* DELETE news */
-router.get(consts.URL_NEWS_ID, newsController);
+router.delete(consts.URL_NEWS_ID, newsController.deleteNewById);
 
 module.exports = router;
