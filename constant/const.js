@@ -58,33 +58,32 @@ module.exports = {
     AWS_SECRET_ACCESS_KEY: "LiiF1XkQzugp8BrvHzPOYsJhZklWYb8ItXNUftLj",
     AWS_BUCKET_NAME: "alkemy-ong",
 
-    // User is not an admin:
-    USER_IS_NOT_AN_ADMIN: "El usuario no es administrador",
-    //News Route
-    URL_NEWS_ID: "/:id",
-    MESSAGE_NOT_FOUND: "News Not found",
-    ARRAY_ENPTY: 0,
-    //Authenticated user:
-    // Authorization user token
-    AUTHORIZATION: "authorization",
-    TOKEN_IS_NOT_PROVIDED: "no token provided",
-    // User Atrributes
-    FIRST_NAME: "firstName",
-    LAST_NAME: "lastName",
-    EMAIL: "email",
-    IMAGE: "image",
-    // PLACEHOLDER IDS
-    DEFAULT_ROLE_ID: 1,
-    DEFAULT_ORG_ID: 1,
-    // DUPLICATE EMAIL MESSAGE
-    DUPLICATE_EMAIL_MSG: "Email is already in use.",
-    // BCRYPT SALT ROUNDS
-    SALT_ROUNDS: 8,
-    // POST register new User
-    URL_AUTH_REGISTER: "/register",
-    // 400 FAILURE CODE
-    CODE_FAILURE_400: 400,
-
-    //Activities
-    URL_POST_ACTIVITIES: "/",
+  // User is not an admin:
+  USER_IS_NOT_AN_ADMIN: "El usuario no es administrador",
+  //News Route
+  URL_NEWS_ID: "/:id",
+  MESSAGE_NOT_FOUND: "News Not found",
+  ARRAY_ENPTY: 0,
+  //Authenticated user:
+  // Authorization user token
+  AUTHORIZATION: "authorization",
+  TOKEN_IS_NOT_PROVIDED: "no token provided",
+  // User Atrributes
+  FIRST_NAME: "firstName",
+  LAST_NAME: "lastName",
+  EMAIL: "email",
+  IMAGE: "image",
+  // PLACEHOLDER IDS
+  DEFAULT_ROLE_ID: 1,
+  DEFAULT_ORG_ID: 1,
+  // DUPLICATE EMAIL MESSAGE
+  DUPLICATE_EMAIL_MSG: "Email is already in use.",
+  // BCRYPT SALT ROUNDS
+  SALT_ROUNDS: 8,
+  // POST register new User
+  URL_AUTH_REGISTER: "/register",
+  // 400 FAILURE CODE
+  CODE_FAILURE_400: 400,
+  //Activities
+  URL_POST_ACTIVITIES: "/",
 };
