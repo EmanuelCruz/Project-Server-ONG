@@ -1,37 +1,32 @@
-const AWS = require("aws-sdk");
+const aws = require("aws-sdk");
 const constant = require("../../constant/const");
+const fs = require("fs");
 
-//configuring the AWS environment
-AWS.config.update({
-  accessKeyId: constant.AWS_ACCESS_KEY_ID,
-  secretAccessKey: constant.AWS_SECRET_ACCESS_KEY,
-});
-
-var s3 = new AWS.S3();
-
-//Insert a function Name and a image
-function uploadImage(name, fileContent) {
-  //configuring parameters
+const uploadImage = (req, res) => {
+  aws.config.setPromisesDependency();
+  aws.config.update({
+    accessKeyId: constant.AWS_ACCESS_KEY_ID,
+    secretAccessKey: constant.AWS_SECRET_ACCESS_KEY,
+    region: constant.AWS_REGION,
+  });
+  const s3 = new aws.S3();
   var params = {
+    ACL: "public-read",
     Bucket: constant.AWS_BUCKET_NAME,
-    Body: fileContent,
-    Key: name,
+    Body: fs.createReadStream(req.file.path),
+    Key: "image/" + Date.now() + req.file.originalname,
   };
 
-  s3.upload(params, function (err, data) {
-    //handle error
+  s3.upload(params, (err, data) => {
     if (err) {
-      console.log("Error", err);
+      console.log("Error occured while trying to upload to S3 bucket", err);
+      res.sendStatus(constant.code_failure);
     }
-
-    //success
     if (data) {
-      console.log("Uploaded in:", data.Location);
-      return data;
+      fs.unlinkSync(req.file.path); // Empty temp folder
+      return res(data.Location);
     }
   });
-}
-
-module.exports = {
-  uploadImage,
 };
+
+module.exports = uploadImage;
