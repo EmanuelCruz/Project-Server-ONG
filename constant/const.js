@@ -66,4 +66,7 @@ module.exports = {
   LAST_NAME: "lastName",
   EMAIL: "email",
   IMAGE: "image",
+
+  // Contacts route:
+  URL_CONTACTS: "/contacts",
 };
