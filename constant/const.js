@@ -73,6 +73,7 @@ module.exports = {
   LAST_NAME: "lastName",
   EMAIL: "email",
   IMAGE: "image",
+  URL_CONTACTS: "/contacts",
   // PLACEHOLDER IDS
   DEFAULT_ROLE_ID: 1,
   DEFAULT_ORG_ID: 1,
