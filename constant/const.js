@@ -73,6 +73,18 @@ module.exports = {
     LAST_NAME: "lastName",
     EMAIL: "email",
     IMAGE: "image",
+    // PLACEHOLDER IDS
+    DEFAULT_ROLE_ID: 1,
+    DEFAULT_ORG_ID: 1,
+    // DUPLICATE EMAIL MESSAGE
+    DUPLICATE_EMAIL_MSG: "Email is already in use.",
+    // BCRYPT SALT ROUNDS
+    SALT_ROUNDS: 8,
+    // POST register new User
+    URL_AUTH_REGISTER: "/register",
+    // 400 FAILURE CODE
+    CODE_FAILURE_400: 400,
+
     //Activities
     URL_POST_ACTIVITIES: "/",
 };
