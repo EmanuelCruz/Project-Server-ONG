@@ -43,7 +43,6 @@ exports.createNews = (req, res) => {
       categoryId: req.body.categoryId,
     };
     uploadImage(req, (img) => {
-      console.log(img);
       news["image"] = img;
       newsQuery
         .createEntry(news)
