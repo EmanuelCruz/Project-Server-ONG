@@ -86,6 +86,9 @@ module.exports = {
   URL_AUTH_REGISTER: "/register",
   // 400 FAILURE CODE
   CODE_FAILURE_400: 400,
+  // Deleted News
+  DELETED_NEWS: "News deleted successfully",
+  ERROR_DELETED_NEWS: "Could not delete the news with id:",
   //Activities
   URL_POST_ACTIVITIES: "/",
 
