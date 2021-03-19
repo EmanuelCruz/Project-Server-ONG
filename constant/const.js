@@ -13,12 +13,6 @@ module.exports = {
   code_failure: 500,
   //FAILURE CODE 404
   CODE_FAILURE_404: 404,
-  //POST Success
-  POST_SUCCESS: 201,
-  //POST bad request
-  POST_FAILURE: 400,
-  //FORBIDEN ACCION CODE
-  FORBIDDEN_ACTION_CODE: 403,
   //USER NOT FOUND
   NOT_FOUND_USER: "User not found",
   //** This string is used for validate email and password fields when the user login */
@@ -28,8 +22,6 @@ module.exports = {
       .isLength({ min: 6 })
       .withMessage("Invalid email or password"),
   ],
-  //MISING FIELDS
-  MISING_FIELDS: "Empty fields",
 
   //Mail API KEY
   SENGRID_API_KEY_TESTING:
@@ -98,4 +90,8 @@ module.exports = {
 
   //NEWS
   TYPE_NEWS: "news",
+
+  // Mail new contact registred thank you message:
+  MAIL_NEW_CONTACT_SUBJECT: "Gracias por registrarse.",
+  MAIL_NEW_CONTACT_TEXT: "Ya estas en nuestra base de datos.",
 };
