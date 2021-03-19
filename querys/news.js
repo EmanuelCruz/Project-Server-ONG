@@ -17,7 +17,7 @@ exports.getTypeNews = async (typeNews) => {
   try {
     const news = await Entry.findAll({
       where: { type: typeNews },
-      attributes: ["name", "image", "createdAt"],
+      attributes: ["id", "name", "image", "createdAt"],
     });
     return news;
   } catch (error) {
@@ -31,6 +31,23 @@ exports.updateEntry = async (news, newsId) => {
     if (updateNews != consts.UPDATE_SUCCESS) {
       return await Entry.findAll({ where: { id: newsId } });
     }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.createEntry = async (news) => {
+  try {
+    const newNews = await Entry.create(news);
+    return newNews;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.deleteNews = async (id) => {
+  try {
+    return await Entry.destroy({ where: { id, type: "news" } });
   } catch (error) {
     console.log(error);
   }

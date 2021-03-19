@@ -59,3 +59,46 @@ exports.updateNews = (req, res) => {
     });
   }
 };
+
+exports.createNews = (req, res) => {
+  if (!req.body.name || !req.body.content || !req.body.categoryId) {
+    res
+      .status(consts.FORBIDDEN_ACTION_CODE)
+      .send({ error: consts.MISING_FIELDS });
+  } else {
+    const news = {
+      name: req.body.name,
+      content: req.body.content,
+      categoryId: req.body.categoryId,
+      type: consts.TYPE_NEWS,
+    };
+    uploadImage(req, (img) => {
+      news["image"] = img;
+      newsQuery
+        .updateEntry(news, req.params.id)
+        .then((dataNews) => {
+          if (dataNews.length == consts.ARRAY_ENPTY) {
+            throw new Error(consts.NOT_FOUND_USER);
+          }
+          res.status(consts.code_success).json(dataNews);
+        })
+        .catch((err) => {
+          res.status(consts.code_failure).send({ Error: err.message });
+        });
+    });
+  }
+};
+
+exports.deleteNewById = async (req, res, next) => {
+  const { id } = req.params;
+  const entry = await newsQuery.deleteNews(id);
+  if (entry) {
+    res.json({
+      message: consts.DELETED_NEWS,
+    });
+  } else {
+    res.status(consts.code_failure).json({
+      message: `${consts.ERROR_DELETED_NEWS} ${id}`,
+    });
+  }
+};

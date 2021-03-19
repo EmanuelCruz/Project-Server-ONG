@@ -17,6 +17,8 @@ module.exports = {
   POST_SUCCESS: 201,
   //POST bad request
   POST_FAILURE: 400,
+  //FORBIDEN ACCION CODE
+  FORBIDDEN_ACTION_CODE: 403,
   //USER NOT FOUND
   NOT_FOUND_USER: "User not found",
   //** This string is used for validate email and password fields when the user login */
@@ -26,6 +28,8 @@ module.exports = {
       .isLength({ min: 6 })
       .withMessage("Invalid email or password"),
   ],
+  //MISING FIELDS
+  MISING_FIELDS: "Empty fields",
 
   //Mail API KEY
   SENGRID_API_KEY_TESTING:
@@ -82,10 +86,16 @@ module.exports = {
   URL_AUTH_REGISTER: "/register",
   // 400 FAILURE CODE
   CODE_FAILURE_400: 400,
+  // Deleted News
+  DELETED_NEWS: "News deleted successfully",
+  ERROR_DELETED_NEWS: "Could not delete the news with id:",
   //Activities
   URL_POST_ACTIVITIES: "/",
 
-  //MULTER CONFIG
+  //MULTER LIBRARY
   MULTER_KEY_NAME: "image",
   MULTER_DESTINATION_PARAMS: { dest: "temp/" },
+
+  //NEWS
+  TYPE_NEWS: "news",
 };
