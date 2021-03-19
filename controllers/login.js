@@ -10,10 +10,10 @@ exports.loginAuth = async (req, res, next) => {
   try {
     const user = await loginQuery.getUserByEmail(emailInput);
     const userInDataBase = user.dataValues.email;
+    const hash = user.dataValues.password;
 
     if (emailInput === userInDataBase) {
-      const password = await loginQuery.getUserByPassword(passwordInput);
-      const validPassword = await bcrypt.compare(passwordInput, password);
+      const validPassword = await bcrypt.compare(passwordInput, hash);
 
       if (validPassword) {
         res.status(consts.code_success).send(user.dataValues);
