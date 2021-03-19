@@ -1,12 +1,13 @@
 const newsQuery = require("../querys/news");
 var consts = require("../constant/const");
+const updateEntry = require("../querys/news");
 const uploadImage = require("../services/aws/s3UploadImage");
 
 exports.getNews = (req, res, next) => {
   newsQuery
     .getTypeNews("news")
-    .then((news) => {
-      res.status(consts.code_success).send(news);
+    .then((org) => {
+      res.status(consts.code_success).send(org);
     })
     .catch((err) =>
       res.status(consts.code_failure).send({ message: err.message })
@@ -31,6 +32,34 @@ exports.getNewsById = (req, res, next) => {
     );
 };
 
+exports.updateNews = (req, res) => {
+  if (!req.params.id) {
+    res
+      .status(consts.FORBIDDEN_ACTION_CODE)
+      .send({ error: consts.NOT_FOUND_USER });
+  } else {
+    const news = {
+      name: req.body.name,
+      content: req.body.content,
+      categoryId: req.body.categoryId,
+    };
+    uploadImage(req, (img) => {
+      news["image"] = img;
+      newsQuery
+        .updateEntry(news, req.params.id)
+        .then((dataNews) => {
+          if (dataNews.length == consts.ARRAY_ENPTY) {
+            throw new Error(consts.NOT_FOUND_USER);
+          }
+          res.status(consts.code_success).json(dataNews);
+        })
+        .catch((err) => {
+          res.status(consts.code_failure).send({ Error: err.message });
+        });
+    });
+  }
+};
+
 exports.createNews = (req, res) => {
   if (!req.body.name || !req.body.content || !req.body.categoryId) {
     res
@@ -46,12 +75,15 @@ exports.createNews = (req, res) => {
     uploadImage(req, (img) => {
       news["image"] = img;
       newsQuery
-        .createEntry(news)
+        .updateEntry(news, req.params.id)
         .then((dataNews) => {
+          if (dataNews.length == consts.ARRAY_ENPTY) {
+            throw new Error(consts.NOT_FOUND_USER);
+          }
           res.status(consts.code_success).json(dataNews);
         })
         .catch((err) => {
-          res.status(consts.code_failure).send({ message: err.message });
+          res.status(consts.code_failure).send({ Error: err.message });
         });
     });
   }
