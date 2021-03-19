@@ -44,7 +44,6 @@ exports.createNews = (req, res) => {
       type: consts.TYPE_NEWS,
     };
     uploadImage(req, (img) => {
-      console.log(img);
       news["image"] = img;
       newsQuery
         .createEntry(news)
