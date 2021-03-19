@@ -92,4 +92,7 @@ module.exports = {
   //MULTER LIBRARY
   MULTER_KEY_NAME: "image",
   MULTER_DESTINATION_PARAMS: { dest: "temp/" },
+
+  //NEWS
+  TYPE_NEWS: "news",
 };

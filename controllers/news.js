@@ -41,6 +41,7 @@ exports.createNews = (req, res) => {
       name: req.body.name,
       content: req.body.content,
       categoryId: req.body.categoryId,
+      type: consts.TYPE_NEWS,
     };
     uploadImage(req, (img) => {
       console.log(img);
