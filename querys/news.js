@@ -24,6 +24,15 @@ exports.getTypeNews = async (typeNews) => {
   }
 };
 
+exports.createEntry = async (news) => {
+  try {
+    const newNews = await Entry.create(news);
+    return newNews;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 exports.deleteNews = async (id) => {
   try {
     return await Entry.destroy({ where: { id, type: "news" } });
