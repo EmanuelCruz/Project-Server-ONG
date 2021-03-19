@@ -43,6 +43,7 @@ exports.createNews = (req, res) => {
       categoryId: req.body.categoryId,
       type: consts.TYPE_NEWS,
     };
+
     uploadImage(req, (img) => {
       news["image"] = img;
       newsQuery
