@@ -94,4 +94,8 @@ module.exports = {
   // Mail new contact registred thank you message:
   MAIL_NEW_CONTACT_SUBJECT: "Gracias por registrarse.",
   MAIL_NEW_CONTACT_TEXT: "Ya estas en nuestra base de datos.",
+
+  // Contact validation
+  EMPTY_CONTACT_NAME: "El campo name tiene menos de 3 caracteres",
+  EMPTY_CONTACT_EMAIL: "El campo email no es válido",
 };
