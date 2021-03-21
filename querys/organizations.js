@@ -13,6 +13,7 @@ exports.getOrganization = (orgId) => {
       "contactFacebook",
       "contactLinkedin",
       "contactTwitter",
+      "contactInstagram",
     ],
   });
 };
