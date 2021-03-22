@@ -17,6 +17,8 @@ exports.loginAuth = async (req, res, next) => {
 
       if (validPassword) {
         res.status(consts.code_success).send(user.dataValues);
+      } else {
+        res.status(consts.code_failure).send({ ok: false });
       }
     }
   } catch (err) {
