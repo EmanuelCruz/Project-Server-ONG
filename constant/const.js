@@ -15,6 +15,9 @@ module.exports = {
   CODE_FAILURE_404: 404,
   //USER NOT FOUND
   NOT_FOUND_USER: "User not found",
+  //MISSING FIELDS
+  FORBIDDEN_ACTION_CODE: 403,
+  MISING_FIELDS: "Some fields are missing",
   //** This string is used for validate email and password fields when the user login */
   loginValuesFieldValidator: [
     body("email").exists().isEmail().withMessage("Invalid email or password"),
