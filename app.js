@@ -13,6 +13,7 @@ const authRouter = require("./routes/auth");
 const newsRouter = require("./routes/news");
 const activitiesRouter = require("./routes/activities");
 const contactsRouter = require("./routes/contacts");
+const categoriesRouter = require("./routes/categories");
 
 const awsTestingRoute = require("./services/aws/testinUpload");
 
@@ -36,6 +37,7 @@ app.use("/auth", authRouter);
 app.use("/news", newsRouter);
 app.use("/activities", activitiesRouter);
 app.use("/", contactsRouter);
+app.use("/categories", categoriesRouter);
 
 //test aws
 app.use("/", awsTestingRoute);
