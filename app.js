@@ -38,12 +38,9 @@ app.use("/auth", authRouter);
 app.use("/news", newsRouter);
 app.use("/activities", activitiesRouter);
 app.use("/", contactsRouter);
-<<<<<<< HEAD
 app.use("/categories", categoriesRouter);
 
-=======
 app.use("/testimonials", testimonialsRouter);
->>>>>>> b718d8ee5fc8005223f5572c16f1c80abacda1d6
 //test aws
 app.use("/", awsTestingRoute);
 
