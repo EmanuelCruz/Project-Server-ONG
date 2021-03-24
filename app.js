@@ -39,7 +39,7 @@ app.use("/news", newsRouter);
 app.use("/activities", activitiesRouter);
 app.use("/", contactsRouter);
 app.use("/testimonials", testimonialsRouter);
-app.use("/members ", membersRouter);
+app.use("/members", membersRouter);
 //test aws
 app.use("/", awsTestingRoute);
 

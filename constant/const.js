@@ -101,7 +101,4 @@ module.exports = {
   // Contact validation
   EMPTY_CONTACT_NAME: "El campo name tiene menos de 3 caracteres",
   EMPTY_CONTACT_EMAIL: "El campo email no es válido",
-
-  // Members
-  MESSAGE_FAILURE: "Something goes wrong"
 };
