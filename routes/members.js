@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const consts = require("../constant/const");
+const { body } = require("express-validator");
 
 const membersController = require("../controllers/members");
 
@@ -7,6 +9,10 @@ const membersController = require("../controllers/members");
 router.get("/", membersController.getMembers);
 
 /* Create Member */
-router.post("/", membersController.createMember);
+router.post(
+  "/",
+  body(consts.FIELD_NAME).isString(),
+  membersController.createMember
+);
 
 module.exports = router;
