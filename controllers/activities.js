@@ -32,8 +32,24 @@ const postActivities = (req, res, next) => {
         );
 };
 
+const updateActivity = (req, res, next) => {
+    const body = req.body;
+    const activityId = req.params.id;
+    activitiesQuery.updateActivity(activityId, body.name, body.content)
+        .then(result => {
+            if (result[1]) {
+                activitiesQuery.getActivity(activityId).then(activity => {
+                    res.status(consts.code_success).send(activity);
+                }).catch(err => res.status(consts.code_failure).send({message: err.message}));
+            } else {
+                res.status(consts.code_failure).send(consts.NOT_FOUND_ACTIVITY);
+            }
+        }).catch(err => res.status(consts.code_failure).send({message: err.message}));
+};
+
 module.exports = {
     activitiesValidationRules,
     validate,
     postActivities,
+    updateActivity
 };

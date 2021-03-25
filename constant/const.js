@@ -86,6 +86,13 @@ module.exports = {
   ERROR_DELETED_NEWS: "Could not delete the news with id:",
   //Activities
   URL_POST_ACTIVITIES: "/",
+  URL_PUT_ACTIVITIES: "/:id",
+  // POST Success
+  POST_SUCCESS: 201,
+  // POST bad request
+  POST_FAILURE: 400,
+  // Activity not found
+  NOT_FOUND_ACTIVITY: "Activity not found.",
 
   //MULTER LIBRARY
   MULTER_KEY_NAME: "image",

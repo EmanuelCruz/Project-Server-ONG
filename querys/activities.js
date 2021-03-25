@@ -12,3 +12,14 @@ exports.createActivities = async (name, content) => {
         return err;
     }
 };
+
+exports.updateActivity = (activityId, name, content) => {
+    return Activities.update({name, content}, {
+        where: {id: activityId},
+        returning: true,
+        plain: true});
+};
+
+exports.getActivity = (activityId) => {
+    return Activities.findOne({where: {id: activityId}});
+};
