@@ -24,3 +24,11 @@ exports.updateCategoryById = async (categoryData, categoryId) => {
     return err;
   }
 };
+
+exports.deleteCategoryById = async (categoryId) => {
+  try {
+    await Categories.destroy({ where: { id: categoryId } });
+  } catch (err) {
+    return err;
+  }
+};
