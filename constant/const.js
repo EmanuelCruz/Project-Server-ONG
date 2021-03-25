@@ -112,6 +112,9 @@ module.exports = {
   // Categories:
   URL_CATEGORIES_UPDATE: "/:id",
   SUCCESS_CATEGORY_UPDATE: "La categoría ha sido actualizada exitosamente.",
-  ERROR_DELETE_CATEGORIES: "La categoría no pudo ser actualizada.",
+  ERROR_UPDATE_CATEGORIES: "La categoría no pudo ser actualizada.",
   ERROR_CATEGORIES_NOT_FOUND: "Error: Categoría no encontrada.",
+  URL_CATEGORIES_DELETE: "/:id",
+  SUCCESS_CATEGORY_DELETE: "La categoría fue eliminada con éxito",
+  ERROR_DELETE_CATEGORIES: "La categoría no pudo ser eliminada",
 };
