@@ -20,3 +20,9 @@ exports.categoriesUpdate = async (req, res, next) => {
     res.status(consts.code_failure).send(consts.ERROR_DELETE_CATEGORIES);
   }
 };
+
+exports.getCategories = (req, res, next) => {
+  categoriesQuery.getCategories().then(categories => {
+    res.status(consts.code_success).send(categories);
+  }).catch(err => res.status(consts.code_failure).send({message: err.message}));
+};

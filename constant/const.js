@@ -114,4 +114,5 @@ module.exports = {
   SUCCESS_CATEGORY_UPDATE: "La categoría ha sido actualizada exitosamente.",
   ERROR_DELETE_CATEGORIES: "La categoría no pudo ser actualizada.",
   ERROR_CATEGORIES_NOT_FOUND: "Error: Categoría no encontrada.",
+  URL_CATEGORIES_GET: "/",
 };
