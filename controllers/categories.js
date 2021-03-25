@@ -17,6 +17,25 @@ exports.categoriesUpdate = async (req, res, next) => {
     } else
       res.status(consts.code_failure).send(consts.ERROR_CATEGORIES_NOT_FOUND);
   } catch (err) {
+    res.status(consts.code_failure).send(consts.ERROR_UPDATE_CATEGORIES);
+  }
+};
+
+// Categories DELETE
+
+exports.categoriesDelete = async (req, res) => {
+  try {
+    const categoryId = req.params.id;
+    const categoryInDataBase = await categoriesQuery.getCategoryById(
+      categoryId
+    );
+
+    if (categoryInDataBase) {
+      await categoriesQuery.deleteCategoryById(categoryId);
+      res.status(consts.code_success).send(consts.SUCCESS_CATEGORY_DELETE);
+    } else
+      res.status(consts.code_failure).send(consts.ERROR_CATEGORIES_NOT_FOUND);
+  } catch (err) {
     res.status(consts.code_failure).send(consts.ERROR_DELETE_CATEGORIES);
   }
 };
