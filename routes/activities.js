@@ -11,4 +11,11 @@ router.post(
     activitiesController.postActivities
 );
 
+router.put(
+    consts.URL_PUT_ACTIVITIES,
+    activitiesController.activitiesValidationRules(),
+    activitiesController.validate,
+    activitiesController.updateActivity
+);
+
 module.exports = router;
