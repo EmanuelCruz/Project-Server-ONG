@@ -18,6 +18,8 @@ module.exports = {
   //MISSING FIELDS
   FORBIDDEN_ACTION_CODE: 403,
   MISING_FIELDS: "Some fields are missing",
+  //UPDATE SUCCESS
+  UPDATE_SUCCESS: 0,
   //** This string is used for validate email and password fields when the user login */
   loginValuesFieldValidator: [
     body("email").exists().isEmail().withMessage("Invalid email or password"),
