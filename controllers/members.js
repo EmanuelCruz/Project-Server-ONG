@@ -17,3 +17,5 @@ exports.getMembers = async (req, res) => {
     });
   }
 };
+
+exports.createMember = async (req, res) => {};

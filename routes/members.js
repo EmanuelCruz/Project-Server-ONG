@@ -3,7 +3,10 @@ const router = express.Router();
 
 const membersController = require("../controllers/members");
 
-/* GET members */
+/* Get members */
 router.get("/", membersController.getMembers);
+
+/* Create Member */
+router.post("/", membersController.createMember);
 
 module.exports = router;
