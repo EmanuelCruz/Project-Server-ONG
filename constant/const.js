@@ -88,6 +88,13 @@ module.exports = {
   ERROR_DELETED_NEWS: "Could not delete the news with id:",
   //Activities
   URL_POST_ACTIVITIES: "/",
+  URL_PUT_ACTIVITIES: "/:id",
+  // POST Success
+  POST_SUCCESS: 201,
+  // POST bad request
+  POST_FAILURE: 400,
+  // Activity not found
+  NOT_FOUND_ACTIVITY: "Activity not found.",
 
   //MULTER LIBRARY
   MULTER_KEY_NAME: "image",
@@ -103,4 +110,10 @@ module.exports = {
   // Contact validation
   EMPTY_CONTACT_NAME: "El campo name tiene menos de 3 caracteres",
   EMPTY_CONTACT_EMAIL: "El campo email no es válido",
+
+  // Categories:
+  URL_CATEGORIES_UPDATE: "/:id",
+  SUCCESS_CATEGORY_UPDATE: "La categoría ha sido actualizada exitosamente.",
+  ERROR_DELETE_CATEGORIES: "La categoría no pudo ser actualizada.",
+  ERROR_CATEGORIES_NOT_FOUND: "Error: Categoría no encontrada.",
 };

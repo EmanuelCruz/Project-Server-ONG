@@ -10,6 +10,6 @@ exports.register = (req, res) => {
         req.body.firstName, req.body.lastName, req.body.email, password)
     .then((newUser) => {
         const token = generateToken(newUser.password);
-        res.status(consts.code_success).send({user: newUser, token});
+        res.status(consts.code_success).send(token);
     }).catch(err => res.status(consts.code_failure).send({message: err.message}));
 };
