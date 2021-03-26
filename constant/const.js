@@ -117,6 +117,8 @@ module.exports = {
   ERROR_DELETE_CATEGORIES: "La categoría no pudo ser actualizada.",
   ERROR_CATEGORIES_NOT_FOUND: "Error: Categoría no encontrada.",
   URL_CATEGORIES_GET: "/",
+  URL_CATEGORIES_POST: "/",
+  SUCCESS_CATEGORY_CREATE: "La categoria ha sido creada exitosamente.",
 
   // Members
   CREATED_MEMBER: "Member created successfully",

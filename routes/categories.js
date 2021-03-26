@@ -9,4 +9,10 @@ router.put(consts.URL_CATEGORIES_UPDATE, categoriesController.categoriesUpdate);
 // Get all categories
 router.get(consts.URL_CATEGORIES_GET, categoriesController.getCategories);
 
+// Create a category
+router.post(consts.URL_CATEGORIES_POST,
+            categoriesController.categoriesValidationRules(),
+            categoriesController.validate,
+            categoriesController.createCategory);
+
 module.exports = router;
