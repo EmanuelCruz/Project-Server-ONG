@@ -24,3 +24,7 @@ exports.updateCategoryById = async (categoryData, categoryId) => {
     return err;
   }
 };
+
+exports.getCategories = () => {
+  return Categories.findAll();
+};
