@@ -119,6 +119,9 @@ module.exports = {
 
   // Members
   CREATED_MEMBER: "Member created successfully",
+  UPDATED_MEMBER: "Member updated successfully",
+  FIELD_ID: "id",
   FIELD_NAME: "name",
   FIELD_IMAGE: "image",
+  MEMBER_NOT_FOUND: "id member not found"
 };
