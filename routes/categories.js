@@ -11,5 +11,7 @@ router.delete(
   consts.URL_CATEGORIES_DELETE,
   categoriesController.categoriesDelete
 );
+// Get all categories
+router.get(consts.URL_CATEGORIES_GET, categoriesController.getCategories);
 
 module.exports = router;
