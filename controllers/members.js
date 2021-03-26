@@ -61,3 +61,19 @@ exports.updateMember = async (req, res) => {
     });
   }
 };
+
+exports.deleteMember = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const member = await membersQuery.deleteMember(res, id);
+    if (member) {
+      return res.json({
+        message: consts.DELETED_MEMBER,
+      });
+    }
+  } catch (err) {
+    res.status(consts.code_failure).json({
+      message: err.message,
+    });
+  }
+};

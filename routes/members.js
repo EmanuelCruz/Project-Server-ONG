@@ -18,4 +18,7 @@ router.post(
 /* Update Member */
 router.put("/:id", membersController.updateMember);
 
+/* Delete Member */
+router.delete("/:id", membersController.deleteMember);
+
 module.exports = router;

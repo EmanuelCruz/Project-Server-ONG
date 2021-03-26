@@ -120,6 +120,7 @@ module.exports = {
   // Members
   CREATED_MEMBER: "Member created successfully",
   UPDATED_MEMBER: "Member updated successfully",
+  DELETED_MEMBER: "Member deleted successfully",
   FIELD_ID: "id",
   FIELD_NAME: "name",
   FIELD_IMAGE: "image",

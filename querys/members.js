@@ -40,3 +40,14 @@ exports.updateMember = async (res, id, name, image) => {
     });
   }
 };
+
+exports.deleteMember = async (res, id) => {
+  const member = await Members.destroy({
+    where: { id },
+  });
+  return member
+    ? member
+    : res.status(consts.CODE_FAILURE_404).json({
+        message: `${consts.MEMBER_NOT_FOUND}: ${id}`,
+      });
+};
