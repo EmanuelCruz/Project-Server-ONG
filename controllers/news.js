@@ -75,7 +75,7 @@ exports.createNews = (req, res) => {
     uploadImage(req, (img) => {
       news["image"] = img;
       newsQuery
-        .updateEntry(news, req.params.id)
+        .createEntry(news, req.params.id)
         .then((dataNews) => {
           if (dataNews.length == consts.ARRAY_ENPTY) {
             throw new Error(consts.NOT_FOUND_USER);
