@@ -15,4 +15,7 @@ router.post(
   membersController.createMember
 );
 
+/* Update Member */
+router.put("/:id", membersController.updateMember);
+
 module.exports = router;

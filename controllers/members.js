@@ -42,3 +42,22 @@ exports.createMember = async (req, res) => {
     });
   }
 };
+
+exports.updateMember = async (req, res) => {
+  const { id } = req.params;
+  const { name, image } = req.body;
+  try {
+    const member = await membersQuery.updateMember(res, id, name, image);
+    if (member) {
+      return res.json({
+        message: consts.UPDATED_MEMBER,
+        data: member,
+      });
+    }
+  } catch (err) {
+    res.status(consts.code_failure).json({
+      message: err.message,
+      data: {},
+    });
+  }
+};
