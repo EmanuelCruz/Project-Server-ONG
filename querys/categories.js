@@ -25,6 +25,15 @@ exports.updateCategoryById = async (categoryData, categoryId) => {
   }
 };
 
+// Delete category by id
+exports.deleteCategoryById = async (categoryId) => {
+  try {
+    await Categories.destroy({ where: { id: categoryId } });
+  } catch (err) {
+    return err;
+  }
+};
+
 exports.getCategories = () => {
   return Categories.findAll();
 };
