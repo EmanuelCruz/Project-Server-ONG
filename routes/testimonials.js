@@ -4,6 +4,7 @@ const multer = require("multer");
 const testimonialsController = require("../controllers/testimonials");
 const consts = require("../constant/const");
 
+//Create new Testimonial
 router.post(
   router.post(
     "/",
@@ -11,5 +12,18 @@ router.post(
     testimonialsController.createTestimonials
   )
 );
+
+//Update one testimonial by id
+router.patch(
+  "/:id",
+  multer(consts.MULTER_DESTINATION_PARAMS).single(consts.MULTER_KEY_NAME),
+  testimonialsController.updateTestimonials
+);
+
+//Get one testimonial by id
+router.get("/:id", testimonialsController.getOneTestimonial);
+
+//Get all testimonials
+router.get("/", testimonialsController.getAllTestimonial);
 
 module.exports = router;

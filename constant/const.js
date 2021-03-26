@@ -18,6 +18,8 @@ module.exports = {
   //MISSING FIELDS
   FORBIDDEN_ACTION_CODE: 403,
   MISING_FIELDS: "Some fields are missing",
+  //UPDATE SUCCESS
+  UPDATE_SUCCESS: 0,
   //** This string is used for validate email and password fields when the user login */
   loginValuesFieldValidator: [
     body("email").exists().isEmail().withMessage("Invalid email or password"),
@@ -115,4 +117,13 @@ module.exports = {
   ERROR_DELETE_CATEGORIES: "La categoría no pudo ser actualizada.",
   ERROR_CATEGORIES_NOT_FOUND: "Error: Categoría no encontrada.",
   URL_CATEGORIES_GET: "/",
+
+  // Members
+  CREATED_MEMBER: "Member created successfully",
+  UPDATED_MEMBER: "Member updated successfully",
+  DELETED_MEMBER: "Member deleted successfully",
+  FIELD_ID: "id",
+  FIELD_NAME: "name",
+  FIELD_IMAGE: "image",
+  MEMBER_NOT_FOUND: "id member not found"
 };
