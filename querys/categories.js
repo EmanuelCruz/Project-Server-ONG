@@ -28,3 +28,7 @@ exports.updateCategoryById = async (categoryData, categoryId) => {
 exports.getCategories = () => {
   return Categories.findAll();
 };
+
+exports.createCategory = (name) => {
+  return Categories.create({name});
+};
