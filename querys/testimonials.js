@@ -36,3 +36,19 @@ exports.getAllTestimonial = async () => {
   const allTestimonial = await Testimonials.findAll();
   return allTestimonial;
 };
+
+exports.deleteOneTestimonial = async (testimonialId) => {
+  try {
+    let testimonialDestroyed = await Testimonials.destroy({
+      where: { id: testimonialId },
+    });
+    console.log(testimonialDestroyed);
+    if (testimonialDestroyed === consts.DELETE_SUCCESS) {
+      return { succes: consts.DELETE_SUCCESS_TEXT + testimonialId };
+    } else {
+      return testimonialDestroyed;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

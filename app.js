@@ -40,7 +40,6 @@ app.use("/news", newsRouter);
 app.use("/activities", activitiesRouter);
 app.use("/", contactsRouter);
 app.use("/categories", categoriesRouter);
-
 app.use("/testimonials", testimonialsRouter);
 app.use("/members", membersRouter);
 //test aws
