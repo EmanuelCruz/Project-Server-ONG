@@ -20,6 +20,9 @@ module.exports = {
   MISING_FIELDS: "Some fields are missing",
   //UPDATE SUCCESS
   UPDATE_SUCCESS: 0,
+  //DELETE SUCCESS
+  DELETE_SUCCESS: 1,
+  DELETE_SUCCESS_TEXT: "Delete success id: ",
   //** This string is used for validate email and password fields when the user login */
   loginValuesFieldValidator: [
     body("email").exists().isEmail().withMessage("Invalid email or password"),

@@ -26,4 +26,7 @@ router.get("/:id", testimonialsController.getOneTestimonial);
 //Get all testimonials
 router.get("/", testimonialsController.getAllTestimonial);
 
+//Delete one testimonial
+router.delete("/:id", testimonialsController.deleteOneTestimonial);
+
 module.exports = router;
