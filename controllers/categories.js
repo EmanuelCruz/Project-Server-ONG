@@ -4,7 +4,7 @@ const categoriesQuery = require("../querys/categories");
 
 // Validators
 exports.categoriesValidationRules = () => {
-  return [body("name").notEmpty().isString()];
+  return [body("name").notEmpty().isString(),body("description").notEmpty().isString()];
 };
 
 exports.validate = (req, res, next) => {
@@ -66,7 +66,7 @@ exports.getCategories = (req, res, next) => {
 };
 
 exports.createCategory = (req, res, next) => {
-  categoriesQuery.createCategory(req.body.name).then(result => {
+  categoriesQuery.createCategory(req.body.name,req.body.description).then(result => {
     res.status(consts.code_success).send(consts.SUCCESS_CATEGORY_CREATE);
   }).catch(err => res.status(consts.code_failure).send({message: err.message}));
 };

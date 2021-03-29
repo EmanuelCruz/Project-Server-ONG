@@ -38,6 +38,11 @@ exports.getCategories = () => {
   return Categories.findAll();
 };
 
-exports.createCategory = (name) => {
-  return Categories.create({name});
+exports.createCategory = async (name,description) => {
+  try {
+    const newCategory = await Categories.create({name,description});
+    return newCategory
+  } catch (err) {
+    return err;
+  }
 };
