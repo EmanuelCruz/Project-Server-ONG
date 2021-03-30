@@ -20,4 +20,6 @@ router.post(consts.URL_CATEGORIES_POST,
             categoriesController.validate,
             categoriesController.createCategory);
 
+router.patch(consts.URL_CATEGORIES_UPDATE, categoriesController.categoriesUpdatePatch);
+
 module.exports = router;

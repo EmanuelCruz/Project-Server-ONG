@@ -40,6 +40,26 @@ exports.categoriesUpdate = async (req, res, next) => {
   }
 };
 
+// Categories UPDATE Whith PATCH
+
+exports.categoriesUpdatePatch = async (req, res, next) => {
+  const categoryId = req.params.id;
+  const newValue = req.body;
+  try {
+    const categoryInDataBase = await categoriesQuery.getCategoryById(
+      categoryId
+    );
+
+    if (categoryInDataBase) {
+      await categoriesQuery.updateCategoryById(newValue, categoryId);
+      res.status(consts.code_success).send(consts.SUCCESS_CATEGORY_UPDATE);
+    } else
+      res.status(consts.code_failure).send(consts.ERROR_CATEGORIES_NOT_FOUND);
+  } catch (err) {
+    res.status(consts.code_failure).send(consts.ERROR_UPDATE_CATEGORIES);
+  }
+};
+
 // Categories DELETE
 
 exports.categoriesDelete = async (req, res) => {
