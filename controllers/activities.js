@@ -47,9 +47,34 @@ const updateActivity = (req, res, next) => {
         }).catch(err => res.status(consts.code_failure).send({message: err.message}));
 };
 
+const getActivities = (req,res,next) => {
+    activitiesQuery
+        .getActivities()
+        .then((activities) => {
+            res.status(consts.code_success).send(activities);
+        })
+        .catch((err) =>
+            res.status(consts.code_failure).send({ message: err.message })
+        );
+}
+
+const getActivity = (req,res,next) => {
+    const activityId = req.params.id;
+    activitiesQuery
+    .getActivity(activityId)
+    .then((activity) => {
+        res.status(consts.code_success).send(activity);
+    })
+    .catch((err) =>
+        res.status(consts.code_failure).send({ message: err.message })
+    );
+}
+
 module.exports = {
     activitiesValidationRules,
     validate,
     postActivities,
-    updateActivity
+    updateActivity,
+    getActivities,
+    getActivity
 };

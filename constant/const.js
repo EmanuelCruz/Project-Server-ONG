@@ -90,6 +90,8 @@ module.exports = {
   DELETED_NEWS: "News deleted successfully",
   ERROR_DELETED_NEWS: "Could not delete the news with id:",
   //Activities
+  URL_GET_ACTIVITIES: "/",
+  URL_GET_BY_ID_ACTIVITIES: "/:id",
   URL_POST_ACTIVITIES: "/",
   URL_PUT_ACTIVITIES: "/:id",
   // POST Success
