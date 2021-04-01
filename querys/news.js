@@ -17,7 +17,7 @@ exports.getTypeNews = async (typeNews) => {
   try {
     const news = await Entry.findAll({
       where: { type: typeNews },
-      attributes: ["id", "name", "image", "createdAt"],
+      attributes: ["id", "name", "image", "content", "createdAt"],
     });
     return news;
   } catch (error) {
