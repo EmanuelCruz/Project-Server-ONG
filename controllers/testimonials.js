@@ -12,17 +12,35 @@ exports.createTestimonials = (req, res) => {
       name: req.body.name,
       content: req.body.content,
     };
-    uploadImage(req, (img) => {
-      testimonial["image"] = img;
+    if (typeof req.body.image === undefined) {
+      testimonial["image"] = "";
       testimonialsQuery
-        .createTestimonial(testimonial)
-        .then((dataNews) => {
-          res.status(consts.code_success).json(dataNews);
+        .updateTestimonial(testimonial, req.params.id)
+        .then((dataTestimonial) => {
+          if (dataTestimonial.length == consts.ARRAY_ENPTY) {
+            throw new Error(consts.NOT_FOUND_USER);
+          }
+          res.status(consts.code_success).json(dataTestimonial);
         })
         .catch((err) => {
           res.status(consts.code_failure).send({ Error: err.message });
         });
-    });
+    } else {
+      uploadImage(req, (img) => {
+        testimonial["image"] = img;
+        testimonialsQuery
+          .updateTestimonial(testimonial, req.params.id)
+          .then((dataTestimonial) => {
+            if (dataTestimonial.length == consts.ARRAY_ENPTY) {
+              throw new Error(consts.NOT_FOUND_USER);
+            }
+            res.status(consts.code_success).json(dataTestimonial);
+          })
+          .catch((err) => {
+            res.status(consts.code_failure).send({ Error: err.message });
+          });
+      });
+    }
   }
 };
 
@@ -36,8 +54,8 @@ exports.updateTestimonials = (req, res) => {
       name: req.body.name,
       content: req.body.content,
     };
-    uploadImage(req, (img) => {
-      testimonial["image"] = img;
+    if (typeof req.body.image === typeof consts.STRING_TYPE) {
+      testimonial["image"] = req.body.image;
       testimonialsQuery
         .updateTestimonial(testimonial, req.params.id)
         .then((dataTestimonial) => {
@@ -49,7 +67,22 @@ exports.updateTestimonials = (req, res) => {
         .catch((err) => {
           res.status(consts.code_failure).send({ Error: err.message });
         });
-    });
+    } else {
+      uploadImage(req, (img) => {
+        testimonial["image"] = img;
+        testimonialsQuery
+          .updateTestimonial(testimonial, req.params.id)
+          .then((dataTestimonial) => {
+            if (dataTestimonial.length == consts.ARRAY_ENPTY) {
+              throw new Error(consts.NOT_FOUND_USER);
+            }
+            res.status(consts.code_success).json(dataTestimonial);
+          })
+          .catch((err) => {
+            res.status(consts.code_failure).send({ Error: err.message });
+          });
+      });
+    }
   }
 };
 

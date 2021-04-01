@@ -31,6 +31,7 @@ module.exports = {
       .withMessage("Invalid email or password"),
   ],
 
+  STRING_TYPE: "",
   //Mail API KEY
   SENGRID_API_KEY_TESTING:
     "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",
