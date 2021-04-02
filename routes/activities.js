@@ -18,4 +18,14 @@ router.put(
     activitiesController.updateActivity
 );
 
+router.get(
+    consts.URL_GET_ACTIVITIES,
+    activitiesController.getActivities
+);
+
+router.get(
+    consts.URL_GET_BY_ID_ACTIVITIES,
+    activitiesController.getActivity
+);
+
 module.exports = router;
