@@ -72,8 +72,8 @@ exports.createNews = (req, res) => {
       categoryId: req.body.categoryId,
       type: consts.TYPE_NEWS,
     };
-    uploadImage(req, (img) => {
-      news["image"] = img;
+    if (typeof req.body.image === undefined) {
+      news["image"] = "";
       newsQuery
         .createEntry(news, req.params.id)
         .then((dataNews) => {
@@ -85,7 +85,22 @@ exports.createNews = (req, res) => {
         .catch((err) => {
           res.status(consts.code_failure).send({ Error: err.message });
         });
-    });
+    } else {
+      uploadImage(req, (img) => {
+        news["image"] = img;
+        newsQuery
+          .createEntry(news, req.params.id)
+          .then((dataNews) => {
+            if (dataNews.length == consts.ARRAY_ENPTY) {
+              throw new Error(consts.NOT_FOUND_USER);
+            }
+            res.status(consts.code_success).json(dataNews);
+          })
+          .catch((err) => {
+            res.status(consts.code_failure).send({ Error: err.message });
+          });
+      });
+    }
   }
 };
 
