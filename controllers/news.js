@@ -43,8 +43,8 @@ exports.updateNews = (req, res) => {
       content: req.body.content,
       categoryId: req.body.categoryId,
     };
-    uploadImage(req, (img) => {
-      news["image"] = img;
+    if (typeof req.body.image === typeof consts.STRING_TYPE) {
+      news["image"] = req.body.image;
       newsQuery
         .updateEntry(news, req.params.id)
         .then((dataNews) => {
@@ -56,7 +56,22 @@ exports.updateNews = (req, res) => {
         .catch((err) => {
           res.status(consts.code_failure).send({ Error: err.message });
         });
-    });
+    } else {
+      uploadImage(req, (img) => {
+        news["image"] = img;
+        newsQuery
+          .updateEntry(news, req.params.id)
+          .then((dataNews) => {
+            if (dataNews.length == consts.ARRAY_ENPTY) {
+              throw new Error(consts.NOT_FOUND_USER);
+            }
+            res.status(consts.code_success).json(dataNews);
+          })
+          .catch((err) => {
+            res.status(consts.code_failure).send({ Error: err.message });
+          });
+      });
+    }
   }
 };
 
