@@ -33,7 +33,9 @@ exports.getOneTestimonial = async (id) => {
 };
 
 exports.getAllTestimonial = async () => {
-  const allTestimonial = await Testimonials.findAll();
+  const allTestimonial = await Testimonials.findAll({
+    order: [["id", "DESC"]],
+  });
   return allTestimonial;
 };
 

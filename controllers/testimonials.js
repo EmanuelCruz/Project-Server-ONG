@@ -15,7 +15,7 @@ exports.createTestimonials = (req, res) => {
     if (typeof req.body.image === undefined) {
       testimonial["image"] = "";
       testimonialsQuery
-        .updateTestimonial(testimonial, req.params.id)
+        .createTestimonial(testimonial)
         .then((dataTestimonial) => {
           if (dataTestimonial.length == consts.ARRAY_ENPTY) {
             throw new Error(consts.NOT_FOUND_USER);
@@ -29,7 +29,7 @@ exports.createTestimonials = (req, res) => {
       uploadImage(req, (img) => {
         testimonial["image"] = img;
         testimonialsQuery
-          .updateTestimonial(testimonial, req.params.id)
+          .createTestimonial(testimonial, req.params.id)
           .then((dataTestimonial) => {
             if (dataTestimonial.length == consts.ARRAY_ENPTY) {
               throw new Error(consts.NOT_FOUND_USER);
