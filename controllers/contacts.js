@@ -7,7 +7,7 @@ exports.registredContacts = async (req, res, next) => {
   const token = req.headers["authorization"].split(" ")[1];
   const decoded = jwt.verify(token, process.env.SECRET_TOKEN);
   const { roleId } = decoded;
-
+  
   try {
     const contacts = await registredContactsQuery.getRegistredContacts();
     roleId === 1
@@ -30,7 +30,7 @@ exports.createdContact = async (req, res) => {
     );
     if (newContact) {
       res.status(201).json({
-        message: "Contact Created Successfully",
+        message: consts.CREATED_CONTACT,
         contact: newContact,
       });
     }

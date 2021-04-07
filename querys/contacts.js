@@ -11,7 +11,7 @@ exports.getRegistredContacts = async () => {
 };
 
 exports.createContact = async (name, phone, email, message, deletedAt) => {
-  const newContact = await Contactssa.create({
+  const newContact = await Contact.create({
     name: name,
     phone: phone,
     email: email,
