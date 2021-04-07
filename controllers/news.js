@@ -87,7 +87,7 @@ exports.createNews = (req, res) => {
       categoryId: req.body.categoryId,
       type: consts.TYPE_NEWS,
     };
-    if (typeof req.body.image === undefined) {
+    if (typeof req.body.image === typeof consts.STRING_TYPE) {
       news["image"] = "";
       newsQuery
         .createEntry(news, req.params.id)
