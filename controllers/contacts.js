@@ -17,3 +17,26 @@ exports.registredContacts = async (req, res, next) => {
     res.status(consts.code_failure).send(consts.USER_IS_NOT_AN_ADMIN);
   }
 };
+
+exports.createdContact = async (req, res) => {
+  const { name, phone, email, message, deletedAt } = req.body;
+  try {
+    const newContact = await registredContactsQuery.createContact(
+      name,
+      phone,
+      email,
+      message,
+      deletedAt
+    );
+    if (newContact) {
+      res.status(201).json({
+        message: "Contact Created Successfully",
+        contact: newContact,
+      });
+    }
+  } catch (err) {
+    res.status(consts.code_failure).json({
+      message: err.message,
+    });
+  }
+};

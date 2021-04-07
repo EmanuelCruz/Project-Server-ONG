@@ -8,14 +8,15 @@ exports.getRegistredContacts = async () => {
   } catch (err) {
     return err;
   }
-}
+};
 
-exports.createContact = (name, phone, email, message, deletedAt) => {
-  return Contact.create({
+exports.createContact = async (name, phone, email, message, deletedAt) => {
+  const newContact = await Contactssa.create({
     name: name,
     phone: phone,
     email: email,
     message: message,
     deletedAt: deletedAt,
   });
+  return newContact;
 };
