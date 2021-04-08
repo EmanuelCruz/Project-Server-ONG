@@ -5,13 +5,11 @@ const testimonialsController = require("../controllers/testimonials");
 const consts = require("../constant/const");
 
 //Create new Testimonial
-router.post(
   router.post(
     "/",
     multer(consts.MULTER_DESTINATION_PARAMS).single(consts.MULTER_KEY_NAME),
     testimonialsController.createTestimonials
   )
-);
 
 //Update one testimonial by id
 router.patch(
