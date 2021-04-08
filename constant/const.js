@@ -137,4 +137,7 @@ module.exports = {
   FIELD_NAME: "name",
   FIELD_IMAGE: "image",
   MEMBER_NOT_FOUND: "id member not found",
+
+  // Contact
+  CREATED_CONTACT: "Contact created successfully"
 };

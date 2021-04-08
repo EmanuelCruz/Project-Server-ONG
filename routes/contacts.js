@@ -10,9 +10,10 @@ const contactsController = require("../controllers/contacts");
 router.get(consts.URL_CONTACTS, contactsController.registredContacts);
 
 /* POST contact (name, email) */
-
-router.post(consts.URL_CONTACTS,
-  contactsValidator.paramsValidator,
-  contactsValidator.validationFunction);
+router.post(
+  consts.URL_CONTACTS,
+  [contactsValidator.paramsValidator, contactsValidator.validationFunction],
+  contactsController.createdContact
+);
 
 module.exports = router;
