@@ -2,12 +2,11 @@ const express = require("express");
 const router = express.Router();
 const activitiesController = require("../controllers/activities");
 const consts = require("../constant/const");
+const multer = require("multer");
 
-/* Creation of activities. */
 router.post(
-    consts.URL_POST_ACTIVITIES,
-    activitiesController.activitiesValidationRules(),
-    activitiesController.validate,
+    "/",
+    multer(consts.MULTER_DESTINATION_PARAMS).single(consts.MULTER_KEY_NAME),
     activitiesController.postActivities
 );
 

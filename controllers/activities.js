@@ -1,6 +1,7 @@
 const { body, validationResult } = require("express-validator");
 const activitiesQuery = require("../querys/activities");
 const consts = require("../constant/const");
+const uploadImage = require("../services/aws/s3UploadImage");
 
 const activitiesValidationRules = () => {
     return [body("name").notEmpty(), body("content").notEmpty()];
@@ -20,16 +21,50 @@ const validate = (req, res, next) => {
 };
 
 const postActivities = (req, res, next) => {
-    const name = req.body.name;
-    const content = req.body.content;
-    activitiesQuery
-        .createActivities(name, content)
-        .then((activity) => {
-            res.status(consts.POST_SUCCESS).send(activity);
-        })
-        .catch((err) =>
-            res.status(consts.POST_FAILURE).send({ message: err.message })
-        );
+
+    if (!req.body.name || !req.body.content) {
+        res.status(consts.FORBIDDEN_ACTION_CODE).send({
+            error: consts.MISING_FIELDS,
+        });
+    } else {
+        const activity = {
+            name: req.body.name,
+            content: req.body.content,
+        };
+        if (typeof req.body.image === undefined) {
+            activity["image"] = "";
+            activitiesQuery
+                .createActivities(activity)
+                .then((dataActivity) => {
+                    if (dataActivity.length == consts.ARRAY_ENPTY) {
+                        throw new Error(consts.NOT_FOUND_USER);
+                    }
+                    res.status(consts.code_success).json(dataActivity);
+                })
+                .catch((err) => {
+                    res.status(consts.code_failure).send({
+                        Error: err.message,
+                    });
+                });
+        } else {
+            uploadImage(req, (img) => {
+                activity["image"] = img;
+                activitiesQuery
+                    .createActivities(activity, req.params.id)
+                    .then((dataActivity) => {
+                        if (dataActivity.length == consts.ARRAY_ENPTY) {
+                            throw new Error(consts.NOT_FOUND_USER);
+                        }
+                        res.status(consts.code_success).json(dataActivity);
+                    })
+                    .catch((err) => {
+                        res.status(consts.code_failure).send({
+                            Error: err.message,
+                        });
+                    });
+            });
+        }
+    }
 };
 
 const updateActivity = (req, res, next) => {

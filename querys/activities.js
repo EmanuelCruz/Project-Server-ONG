@@ -1,11 +1,8 @@
 const db = require("../models");
 const Activities = db.Activities;
 
-exports.createActivities = async (name, content) => {
-    return (activity = await Activities.create({
-        name: name,
-        content: content,
-    }));
+exports.createActivities = async (activity) => {
+    return (activity = await Activities.create(activity));
 };
 
 exports.updateActivity = (activityId, name, content) => {
