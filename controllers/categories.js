@@ -4,19 +4,22 @@ const categoriesQuery = require("../querys/categories");
 
 // Validators
 exports.categoriesValidationRules = () => {
-  return [body("name").notEmpty().isString(),body("description").notEmpty().isString()];
+  return [
+    body("name").notEmpty().isString(),
+    body("description").notEmpty().isString(),
+  ];
 };
 
 exports.validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
-      return next();
+    return next();
   }
   const extractedErrors = [];
   errors.array().map((err) => extractedErrors.push({ [err.param]: err.msg }));
 
   return res.status(422).json({
-      errors: extractedErrors,
+    errors: extractedErrors,
   });
 };
 
@@ -80,13 +83,34 @@ exports.categoriesDelete = async (req, res) => {
 };
 
 exports.getCategories = (req, res, next) => {
-  categoriesQuery.getCategories().then(categories => {
-    res.status(consts.code_success).send(categories);
-  }).catch(err => res.status(consts.code_failure).send({message: err.message}));
+  categoriesQuery
+    .getCategories()
+    .then((categories) => {
+      res.status(consts.code_success).send(categories);
+    })
+    .catch((err) =>
+      res.status(consts.code_failure).send({ message: err.message })
+    );
+};
+
+exports.getACategories = (req, res, next) => {
+  categoriesQuery
+    .getCategoryById(req.params.id)
+    .then((categories) => {
+      res.status(consts.code_success).send(categories);
+    })
+    .catch((err) =>
+      res.status(consts.code_failure).send({ message: err.message })
+    );
 };
 
 exports.createCategory = (req, res, next) => {
-  categoriesQuery.createCategory(req.body.name,req.body.description).then(result => {
-    res.status(consts.code_success).send(consts.SUCCESS_CATEGORY_CREATE);
-  }).catch(err => res.status(consts.code_failure).send({message: err.message}));
+  categoriesQuery
+    .createCategory(req.body.name, req.body.description)
+    .then((result) => {
+      res.status(consts.code_success).send(consts.SUCCESS_CATEGORY_CREATE);
+    })
+    .catch((err) =>
+      res.status(consts.code_failure).send({ message: err.message })
+    );
 };
