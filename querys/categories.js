@@ -35,13 +35,13 @@ exports.deleteCategoryById = async (categoryId) => {
 };
 
 exports.getCategories = () => {
-  return Categories.findAll();
+  return Categories.findAll({ order: [["id", "DESC"]] });
 };
 
-exports.createCategory = async (name,description) => {
+exports.createCategory = async (name, description) => {
   try {
-    const newCategory = await Categories.create({name,description});
-    return newCategory
+    const newCategory = await Categories.create({ name, description });
+    return newCategory;
   } catch (err) {
     return err;
   }

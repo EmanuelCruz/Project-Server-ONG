@@ -14,12 +14,19 @@ router.delete(
 // Get all categories
 router.get(consts.URL_CATEGORIES_GET, categoriesController.getCategories);
 
-// Create a category
-router.post(consts.URL_CATEGORIES_POST,
-            categoriesController.categoriesValidationRules(),
-            categoriesController.validate,
-            categoriesController.createCategory);
+router.get("/:id", categoriesController.getACategories);
 
-router.patch(consts.URL_CATEGORIES_UPDATE, categoriesController.categoriesUpdatePatch);
+// Create a category
+router.post(
+  consts.URL_CATEGORIES_POST,
+  categoriesController.categoriesValidationRules(),
+  categoriesController.validate,
+  categoriesController.createCategory
+);
+
+router.patch(
+  consts.URL_CATEGORIES_UPDATE,
+  categoriesController.categoriesUpdatePatch
+);
 
 module.exports = router;
