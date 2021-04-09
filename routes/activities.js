@@ -27,4 +27,6 @@ router.get(
     activitiesController.getActivity
 );
 
+router.delete("/:id", activitiesController.deleteOneActivity);
+
 module.exports = router;

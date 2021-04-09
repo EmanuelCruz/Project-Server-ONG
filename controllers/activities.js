@@ -105,11 +105,28 @@ const getActivity = (req,res,next) => {
     );
 }
 
+const deleteOneActivity = (req, res) => {
+    activitiesQuery
+        .deleteOneActivity(req.params.id)
+        .then((activity) => {
+            if (!activity.succes) {
+                throw new Error(consts.NOT_FOUND_USER);
+            }
+            res.status(consts.code_success).json(activity);
+        })
+        .catch((err) => {
+            res.status(consts.FORBIDDEN_ACTION_CODE).json({
+                Error: err.message,
+            });
+        });
+};
+
 module.exports = {
     activitiesValidationRules,
     validate,
     postActivities,
     updateActivity,
     getActivities,
-    getActivity
+    getActivity,
+    deleteOneActivity
 };
