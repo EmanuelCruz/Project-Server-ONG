@@ -139,5 +139,11 @@ module.exports = {
   MEMBER_NOT_FOUND: "id member not found",
 
   // Contact
-  CREATED_CONTACT: "Contact created successfully"
+  CREATED_CONTACT: "Contact created successfully",
+
+  // No contacts:
+  ERROR_GET_CONTACTS: "No se encontro ningun contacto.",
+
+  // No users:
+  ERROR_GET_USERS: "No se encontro ningun usuario.",
 };
