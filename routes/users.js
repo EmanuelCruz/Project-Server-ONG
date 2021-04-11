@@ -13,6 +13,6 @@ router.get(consts.url_users, usersController.usersList);
 router.get("/auth/me", usersController.authUser);
 
 /* DELETE a user by id  */
-router.delete("/:id", userDelete.deleteUser);
+router.delete(`${consts.url_users}/:id`, userDelete.deleteUser);
 
 module.exports = router;
