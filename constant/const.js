@@ -77,7 +77,7 @@ module.exports = {
   IMAGE: "image",
   URL_CONTACTS: "/contacts",
   // PLACEHOLDER IDS
-  DEFAULT_ROLE_ID: 1,
+  DEFAULT_ROLE_ID: 2,
   DEFAULT_ORG_ID: 1,
   // DUPLICATE EMAIL MESSAGE
   DUPLICATE_EMAIL_MSG: "Email is already in use.",
