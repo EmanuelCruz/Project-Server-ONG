@@ -94,7 +94,7 @@ module.exports = {
   URL_GET_ACTIVITIES: "/",
   URL_GET_BY_ID_ACTIVITIES: "/:id",
   URL_POST_ACTIVITIES: "/",
-  URL_PUT_ACTIVITIES: "/:id",
+  URL_PATCH_ACTIVITIES: "/:id",
   // POST Success
   POST_SUCCESS: 201,
   // POST bad request
@@ -146,4 +146,7 @@ module.exports = {
 
   // No users:
   ERROR_GET_USERS: "No se encontro ningun usuario.",
+
+  // Activity deleted:
+  SUCCESS_ACTIVITY_DELETED: "La actividad ha sido eliminada exitosamente",
 };
