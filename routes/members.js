@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const consts = require("../constant/const");
 const { body } = require("express-validator");
+const multer = require("multer");
 
 const membersController = require("../controllers/members");
 
@@ -11,7 +12,7 @@ router.get("/", membersController.getMembers);
 /* Create Member */
 router.post(
   "/",
-  body(consts.FIELD_NAME).isString(),
+  multer(consts.MULTER_DESTINATION_PARAMS).single(consts.MULTER_KEY_NAME),
   membersController.createMember
 );
 
