@@ -108,17 +108,6 @@ const updateActivity = (req, res, next) => {
   }
 };
 
-const getActivities = (req, res, next) => {
-  activitiesQuery
-    .getActivities()
-    .then((activities) => {
-      res.status(consts.code_success).json(activities);
-    })
-    .catch((err) =>
-      res.status(consts.code_failure).json({ message: err.message })
-    );
-};
-
 const getActivity = (req, res, next) => {
   const activityId = req.params.id;
   activitiesQuery
@@ -143,21 +132,6 @@ const deleteOneActivity = async (req, res) => {
   }
 };
 
-const deleteOneActivity = (req, res) => {
-  activitiesQuery
-    .deleteOneActivity(req.params.id)
-    .then((activity) => {
-      if (!activity.succes) {
-        throw new Error(consts.NOT_FOUND_USER);
-      }
-      res.status(consts.code_success).json(activity);
-    })
-    .catch((err) => {
-      res.status(consts.FORBIDDEN_ACTION_CODE).json({
-        Error: err.message,
-      });
-    });
-};
 
 module.exports = {
   activitiesValidationRules,
