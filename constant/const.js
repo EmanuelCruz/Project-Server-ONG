@@ -146,4 +146,9 @@ module.exports = {
 
   // No users:
   ERROR_GET_USERS: "No se encontro ningun usuario.",
+
+  // Patch user
+  SUCCESS_PATCH_USER: "Se modifico el usuario.",
+  ERROR_UPDATE_USER: "El usuario no pudo ser actualizado.",
+  ERROR_USER_NOT_FOUND: "Usuario no encontrado.",
 };
