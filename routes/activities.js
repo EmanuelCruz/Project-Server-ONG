@@ -5,27 +5,24 @@ const consts = require("../constant/const");
 const multer = require("multer");
 
 router.post(
-    "/",
-    multer(consts.MULTER_DESTINATION_PARAMS).single(consts.MULTER_KEY_NAME),
-    activitiesController.postActivities
+  "/",
+  multer(consts.MULTER_DESTINATION_PARAMS).single(consts.MULTER_KEY_NAME),
+  activitiesController.postActivities
 );
 
-router.put(
-    consts.URL_PUT_ACTIVITIES,
-    activitiesController.activitiesValidationRules(),
-    activitiesController.validate,
-    activitiesController.updateActivity
+//Update one activity by id
+router.patch(
+  "/:id",
+  multer(consts.MULTER_DESTINATION_PARAMS).single(consts.MULTER_KEY_NAME),
+  activitiesController.updateActivity
 );
 
-router.get(
-    consts.URL_GET_ACTIVITIES,
-    activitiesController.getActivities
-);
+router.get(consts.URL_GET_ACTIVITIES, activitiesController.getActivities);
 
-router.get(
-    consts.URL_GET_BY_ID_ACTIVITIES,
-    activitiesController.getActivity
-);
+router.get(consts.URL_GET_BY_ID_ACTIVITIES, activitiesController.getActivity);
+
+//Delete one activity
+router.delete("/:id", activitiesController.deleteOneActivity);
 
 router.delete("/:id", activitiesController.deleteOneActivity);
 
