@@ -24,4 +24,6 @@ router.get(consts.URL_GET_BY_ID_ACTIVITIES, activitiesController.getActivity);
 //Delete one activity
 router.delete("/:id", activitiesController.deleteOneActivity);
 
+router.delete("/:id", activitiesController.deleteOneActivity);
+
 module.exports = router;
