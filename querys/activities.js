@@ -25,22 +25,6 @@ exports.getActivities = () => {
 };
 
 exports.getActivity = (activityId) => {
-<<<<<<< HEAD
-  return Activities.findOne({ where: { id: activityId } });
-};
-
-exports.deleteOneActivity = async (activityId) => {
-  try {
-    let activityDeleted = await Activities.destroy({
-      where: { id: activityId },
-    });
-
-    return activityDeleted;
-  } catch (error) {
-    return error;
-  }
-};
-=======
     return Activities.findOne({where: {id: activityId}});
 };
 
@@ -58,4 +42,3 @@ exports.deleteOneActivity = async (activityId) => {
         console.log(error);
     }
 };
->>>>>>> ae9ab52b41b85cfdc3d022ccba11b17ea997246c
