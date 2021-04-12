@@ -108,6 +108,17 @@ const updateActivity = (req, res, next) => {
   }
 };
 
+const getActivities = (req, res, next) => {
+  activitiesQuery
+    .getActivities()
+    .then((activities) => {
+      res.status(consts.code_success).json(activities);
+    })
+    .catch((err) =>
+      res.status(consts.code_failure).json({ message: err.message })
+    );
+};
+
 const getActivity = (req, res, next) => {
   const activityId = req.params.id;
   activitiesQuery
