@@ -3,18 +3,25 @@ const Activities = db.Activities;
 const consts = require("../constant/const");
 
 exports.createActivities = async (activity) => {
-    return (activity = await Activities.create(activity));
+  return (activity = await Activities.create(activity));
 };
 
-exports.updateActivity = (activityId, name, content) => {
-    return Activities.update({name, content}, {
-        where: {id: activityId},
-        returning: true,
-        plain: true});
+exports.updateActivity = async (actitivy, activityId) => {
+  try {
+    await Activities.update(actitivy, {
+      where: { id: activityId },
+    });
+    actitivy = await Activities.findAll({
+      where: { id: activityId },
+    });
+    return actitivy;
+  } catch (error) {
+    return error;
+  }
 };
 
 exports.getActivities = () => {
-    return Activities.findAll();
+  return Activities.findAll();
 };
 
 exports.getActivity = (activityId) => {

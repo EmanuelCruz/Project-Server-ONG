@@ -1,6 +1,7 @@
 const membersQuery = require("../querys/members");
 const consts = require("../constant/const");
 const { validationResult } = require("express-validator");
+const uploadImage = require("../services/aws/s3UploadImage");
 
 exports.getMembers = async (req, res) => {
   try {
@@ -19,27 +20,46 @@ exports.getMembers = async (req, res) => {
   }
 };
 
-exports.createMember = async (req, res) => {
-  const { name, image } = req.body;
-  try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res
-        .status(consts.CODE_FAILURE_404)
-        .json({ errors: errors.array() });
-    }
-    const newMember = await membersQuery.createMember(name, image);
-    if (newMember) {
-      return res.json({
-        message: consts.CREATED_MEMBER,
-        data: newMember,
+exports.createMember = (req, res) => {
+  console.log(req.body.name);
+  if (!req.body.name) {
+    res
+      .status(consts.FORBIDDEN_ACTION_CODE)
+      .send({ error: consts.MISING_FIELDS });
+  } else {
+    const member = {
+      name: req.body.name,
+    };
+    if (typeof req.body.image === typeof consts.STRING_TYPE) {
+      member["image"] = "";
+      membersQuery
+        .createMember(member, req.params.id)
+        .then((dataMember) => {
+          if (dataMember.length == consts.ARRAY_ENPTY) {
+            throw new Error(consts.NOT_FOUND_USER);
+          }
+          res.status(consts.code_success).json(dataMember);
+        })
+        .catch((err) => {
+          res.status(consts.code_failure).send({ Error: err.message });
+        });
+    } else {
+      uploadImage(req, (img) => {
+        member["image"] = img;
+        console.log(img);
+        membersQuery
+          .createMember(member, req.params.id)
+          .then((dataMember) => {
+            if (dataMember.length == consts.ARRAY_ENPTY) {
+              throw new Error(consts.NOT_FOUND_USER);
+            }
+            res.status(consts.code_success).json(dataMember);
+          })
+          .catch((err) => {
+            res.status(consts.code_failure).send({ Error: err.message });
+          });
       });
     }
-  } catch (err) {
-    res.status(consts.code_failure).json({
-      message: err.message,
-      data: {},
-    });
   }
 };
 

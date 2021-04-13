@@ -7,17 +7,13 @@ exports.getAllMembers = async () => {
   return members;
 };
 
-exports.createMember = async (name, image) => {
-  const member = await Members.create(
-    {
-      name,
-      image,
-    },
-    {
-      fields: [consts.FIELD_NAME, consts.FIELD_IMAGE],
-    }
-  );
-  return member;
+exports.createMember = async (member) => {
+  try {
+    const newMember = await Members.create(member);
+    return newMember;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 exports.updateMember = async (res, id, name, image) => {

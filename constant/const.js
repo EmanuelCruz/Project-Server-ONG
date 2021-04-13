@@ -77,7 +77,7 @@ module.exports = {
   IMAGE: "image",
   URL_CONTACTS: "/contacts",
   // PLACEHOLDER IDS
-  DEFAULT_ROLE_ID: 1,
+  DEFAULT_ROLE_ID: 2,
   DEFAULT_ORG_ID: 1,
   // DUPLICATE EMAIL MESSAGE
   DUPLICATE_EMAIL_MSG: "Email is already in use.",
@@ -94,7 +94,7 @@ module.exports = {
   URL_GET_ACTIVITIES: "/",
   URL_GET_BY_ID_ACTIVITIES: "/:id",
   URL_POST_ACTIVITIES: "/",
-  URL_PUT_ACTIVITIES: "/:id",
+  URL_PATCH_ACTIVITIES: "/:id",
   // POST Success
   POST_SUCCESS: 201,
   // POST bad request
@@ -151,4 +151,6 @@ module.exports = {
   SUCCESS_PATCH_USER: "Se modifico el usuario.",
   ERROR_UPDATE_USER: "El usuario no pudo ser actualizado.",
   ERROR_USER_NOT_FOUND: "Usuario no encontrado.",
+  // Activity deleted:
+  SUCCESS_ACTIVITY_DELETED: "La actividad ha sido eliminada exitosamente",
 };
