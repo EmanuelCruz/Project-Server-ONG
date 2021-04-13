@@ -45,3 +45,21 @@ exports.authUser = async (req, res, next) => {
     res.json(err);
   }
 };
+
+exports.editUserPatch = async (req, res, next) => {
+  try {
+      const existUser = await usersListQuery.getUserById(req.params.id);
+      if (existUser) {
+          const userData = await usersListQuery.editUserPatch(
+              req.body,
+              req.params.id
+          );
+          const userNew = await usersListQuery.getUserById(req.params.id);
+          res.status(consts.code_success).send(userNew);
+      } else {
+          res.status(consts.code_failure).send(consts.ERROR_USER_NOT_FOUND);
+      }
+  } catch (err) {
+    res.status(consts.code_failure).send(consts.ERROR_UPDATE_USER);
+  }
+};

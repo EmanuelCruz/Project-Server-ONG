@@ -21,3 +21,26 @@ exports.createUser = (firstName, lastName, email, password) => {
     organizationId: consts.DEFAULT_ORG_ID
   });
 };
+
+exports.getUserById = async (id) => {
+  try {
+    const user = await User.findOne({
+      where: { id: id },
+    });
+    console.log(user)
+    return user;
+  } catch (err) {
+    return err;
+  }
+}
+
+exports.editUserPatch = async (data,id) => {
+  try {
+    const updatedUser = await User.update(data, {
+      where: { id: id },
+    });
+    return updatedUser;
+  } catch (err) {
+    return err;
+  }
+}

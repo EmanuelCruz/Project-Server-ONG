@@ -15,4 +15,7 @@ router.get("/auth/me", usersController.authUser);
 /* DELETE a user by id  */
 router.delete(`${consts.url_users}/:id`, userDelete.deleteUser);
 
+/* EDIT user */
+router.patch(`${consts.url_users}/:id`, usersController.editUserPatch);
+
 module.exports = router;
