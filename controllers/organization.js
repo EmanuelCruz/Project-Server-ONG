@@ -8,3 +8,5 @@ exports.getOrganization = (req, res, next) => {
         res.status(consts.code_success).send(org);
     }).catch(err => res.status(consts.code_failure).send({message: err.message}));
 };
+
+//fd
