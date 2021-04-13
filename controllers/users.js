@@ -54,7 +54,8 @@ exports.editUserPatch = async (req, res, next) => {
               req.body,
               req.params.id
           );
-          res.status(consts.code_failure).send(consts.SUCCESS_PATCH_USER);
+          const userNew = await usersListQuery.getUserById(req.params.id);
+          res.status(consts.code_success).send(userNew);
       } else {
           res.status(consts.code_failure).send(consts.ERROR_USER_NOT_FOUND);
       }
