@@ -29,18 +29,18 @@ npx sequelize-cli db:seed:all
 npm start
 ```
 
-## User data in DataBase
+## User data in Database
+
+```
 
 1. Populate your database with Users Data:
 
-```npx sequelize-cli db:seed --seed  20210323201915-test-users.js
-
-```
+npx sequelize-cli db:seed --seed  20210323201915-test-users.js
 
 2. Admin users have the following data:
 
 - Username are like this "Usuario1", "Usuario2", "Usuario3"...
-- Email: "admin@test.com"
+- Email: "adminUser1@test.com" for "Usuario1", "adminUser2@test.com" for "Usuario2" ...
 - Password: 123456
 
 3. Regular users have the following data:
@@ -48,7 +48,5 @@ npm start
 - Username are like this "UsuarioRegular1", "UsuarioRegular2", "UsuarioRegular3"...
 - Email: "regularUser1@test.com" for "UsuarioRegular1", "regularUser2@test.com" for "UsuarioRegular2", "regularUser3@test.com" for "UsuarioRegular3" ...
 - Password: 123456
-
-```
 
 ```
