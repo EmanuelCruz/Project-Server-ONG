@@ -30,7 +30,7 @@ const postActivities = (req, res, next) => {
       name: req.body.name,
       content: req.body.content,
     };
-    if (typeof req.body.image === undefined) {
+    if (typeof req.body.image === typeof consts.STRING_TYPE) {
       activity["image"] = "";
       activitiesQuery
         .createActivities(activity)

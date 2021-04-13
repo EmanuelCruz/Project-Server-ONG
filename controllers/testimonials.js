@@ -12,7 +12,7 @@ exports.createTestimonials = (req, res) => {
       name: req.body.name,
       content: req.body.content,
     };
-    if (typeof req.body.image === undefined) {
+    if (typeof req.body.image === typeof consts.STRING_TYPE) {
       testimonial["image"] = "";
       testimonialsQuery
         .createTestimonial(testimonial)
