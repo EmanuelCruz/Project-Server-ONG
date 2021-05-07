@@ -1,21 +1,21 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn("organizations", "contactFacebook", {
+    await queryInterface.addColumn("Organizations", "contactFacebook", {
       type: Sequelize.STRING,
       allowNull: true,
     }),
-      queryInterface.addColumn("organizations", "contactLinkedin", {
+      queryInterface.addColumn("Organizations", "contactLinkedin", {
         type: Sequelize.STRING,
         allowNull: true,
       }),
-      queryInterface.addColumn("organizations", "contactTwitter", {
+      queryInterface.addColumn("Organizations", "contactTwitter", {
         type: Sequelize.STRING,
         allowNull: true,
       });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("organizations");
+    await queryInterface.dropTable("Organizations");
   },
 };
